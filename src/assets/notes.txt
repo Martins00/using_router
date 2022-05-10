@@ -1,0 +1,39 @@
+Router-link
+this is a link that we use instead of the anchor tag
+Using router links is better because it does not send a new request to the server.
+It consists of a "to=" which we use to actually isert the link
+It is always best to data bind our "to" tag, we data bind it to the name of the component that we wrote in the index.js
+We use this because we might end up changing the name of the file, but we most likely would not be changing that of the "name"
+
+
+Folder structure
+ Create a folder for similar files, or filess that use the same data, and put them in the same folder.
+ This method makes youer foldef=r structure way more organized.
+
+Route Prameter
+This is the path that leads to a specific/dynamic ID
+It is written with a column before it, just after the last slash
+i.e ../jobs/jobber/:id
+We can access the route parameter in the component by saying;
+$route.params.whatever our id is -> The Id here is the one that we put in the index.js file for the path.
+It's best to define the route parameter in the data object, so we can just call it using the defined name. Check code for examples
+Rather than Create the route parameter in the data object, we could just define it in the needed component, and pass it in as a prop in the secondary component.
+Check jobs and jobdetails for this.
+We defined the prop in the jobs component using;
+params: {id: job.id}. It is nested in the router-link
+Then in the index.js we set props to true so it will work. It won't work otherwwise.
+
+
+Redirects and 404
+In other to redirect, we set the path to the former path, then we set the redirect, to the new path. 
+Check index.js for proof
+To set a 404 error, we will create a new component to be displayed when they click on link that is not in a ny route
+we do this by setting the path to '/:catchAll(.*)'
+This would fire the error page whenever we click on a link that is nonexistent 
+
+Programmatic Navigation
+We can use the this.$router.go(number of pages)
+number of pages could be positive or negative. 1 takes it forward by a page. -1 takes it back
+To redirect to a whole new page, we hace to use an object.
+this.router.push ({name: componentName defined in the index.js})
+Check the App.vue for more details.
